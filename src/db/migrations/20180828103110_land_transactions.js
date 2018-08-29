@@ -2,6 +2,7 @@
 exports.up = knex => {
   return knex.schema.createTable('land_transactions', table => {
     table.increments('id')
+    table.integer('property_id')
     table.date('document_date')
     table.date('recording_date')
     table.string('document_type')

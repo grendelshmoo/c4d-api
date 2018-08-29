@@ -3,6 +3,7 @@ exports.seed = knex => {
   return knex(table).insert([
     {
       id: 100001,
+      property_id: 1,
       document_date: "2016-02-22",
       recording_date: "2016-02-22",
       document_type: "Cancellation of Notice of Default and Election To Sell Under Mortgage",
@@ -24,6 +25,7 @@ exports.seed = knex => {
     },
     {
       id: 100002,
+      property_id: 2,
       document_date: "2017-02-22",
       recording_date: "2017-02-22",
       document_type: "Quit Claim Deed",
@@ -42,6 +44,7 @@ exports.seed = knex => {
     },
     {
       id: 100003,
+      property_id: 3,
       document_date: "2017-03-22",
       recording_date: "2017-03-22",
       document_type: "Notice of Eviction",
