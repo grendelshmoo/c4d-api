@@ -4,8 +4,9 @@ const ctrl = require('../controllers/records')
 
 // add auth.isLoggedIn middleware
 router.get('/', ctrl.getAll)
+router.get('/:recordId', ctrl.getOne)
 router.get('/search', ctrl.search)
-router.get('/:id', ctrl.getOne)
+
 
 // router.post('/', auth.isLoggedIn, ctrl.login)
 

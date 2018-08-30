@@ -35,7 +35,7 @@ exports.seed = knex => {
     {
       id: 6,
       transaction_id: 100003,
-      contact_id: 1,
+      contact_id: 3,
       role: 3
     }
   ]).then(() => {
