@@ -12,6 +12,7 @@ app.use(require('body-parser').json())
 app.use(require('cors')())
 
 //Routes
+app.use('/api/users', require('./routes/users'))
 app.use('/api/records', require('./routes/records'))
 // app.use('/api/contacts', require('./routes/contacts'))
 
