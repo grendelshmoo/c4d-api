@@ -6,7 +6,7 @@ exports.up = knex => {
     table.foreign('transaction_id').references('land_transactions.id').onDelete('CASCADE')
     table.integer('contact_id')
     table.foreign('contact_id').references('contacts.id').onDelete('CASCADE')
-    table.integer('role')
+    table.string('role')
     table.timestamps(true, true)
   })
 };

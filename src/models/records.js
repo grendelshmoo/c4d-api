@@ -6,7 +6,7 @@ const db = require('../db')
 function getAll() {
   return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
     const promises = records.map(record => {
-      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role', 'transaction_id').then(parties => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
         record.parties = parties
         return record
       })
@@ -28,8 +28,18 @@ function getOne(id) {
   })
 }
 
+
 function search(fullText) {
-  return db('land_transactions').where('title', 'ILIKE', `%\\${fullText}%`)
+
+  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id').join('contacts', 'parties.contact_id', 'contacts.id').where('last_name', 'ILIKE', `%${fullText}%`).select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+    const promises = records.map(record => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
+        record.parties = parties
+        return record
+      })
+    })
+    return Promise.all(promises)
+  })
 }
 
 module.exports = {
