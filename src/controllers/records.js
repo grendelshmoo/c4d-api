@@ -16,7 +16,7 @@ async function getOne(req, res, next) {
   try {
     const data = await model.getOne(req.params.recordId)
     res.status(200).json({
-      data
+      data: data[0]
     })
   } catch (err) {
     next({

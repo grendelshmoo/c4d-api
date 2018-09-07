@@ -14,7 +14,7 @@ app.use(require('cors')())
 //Routes
 app.use('/api/users', require('./routes/users'))
 app.use('/api/records', require('./routes/records'))
-// app.use('/api/contacts', require('./routes/contacts'))
+app.use('/api/contacts', require('./routes/contacts'))
 
 
 
