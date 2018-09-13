@@ -4,7 +4,7 @@
   "description": "API for the C4D React Application.",
   "main": "src/app.js",
   "scripts": {
-    "dev-server": "nodemon src/app.js",
+    "dev-server": "nodemon --delay 1500ms src/app.js",
     "knex": "knex",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",

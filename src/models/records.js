@@ -42,8 +42,50 @@ function search(fullText) {
   })
 }
 
+function createRecord(body) {
+  console.log('IN MODEL CREATE RECORD')
+  const {title_company, instrument_number} = body
+  console.log('PASSING IN: ', title_company, instrument_number)
+ return db('land_transactions')
+    .returning('id')
+    .insert({title_company, instrument_number})
+    // .then(function(response) {
+    //   console.log('RESPONSE IS: ', response)
+    // })
+
+     // .insert({address})
+     // .returning('id')
+     // .then(function (response) {
+     //     //console.log(body, response, movieId)
+     //     return db('scenes')
+     //
+     //         .insert({movie_id: movieId, description: body.description, location_id: response[0]})
+     //         .returning('*')
+     // })
+     // .then(function(response) {
+     //     console.log('RESPONSE IS: ',response, photo)
+     //     return db('photos')
+     //     .insert({scene_id: response[0].id, photo: photo})
+     // })
+
+
+
+
+}
+
+function editRecord() {
+
+}
+
+function deleteRecord() {
+
+}
+
 module.exports = {
   getAll,
   getOne,
-  search
+  search,
+  createRecord,
+  editRecord,
+  deleteRecord
 }

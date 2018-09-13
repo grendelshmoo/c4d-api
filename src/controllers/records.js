@@ -42,8 +42,34 @@ async function search(req, res, next) {
   }
 }
 
+async function createRecord(req, res, next) {
+  try {
+      // console.log(req.body)
+      const response = await model.createRecord(req.body)
+      // console.log('RESPONSE:', response)
+      res.status(201)
+  } catch (e) {
+      next({
+          status: 400,
+          error: `Record could not be added`
+      })
+  }
+
+}
+
+async function editRecord(req, res, next) {
+
+}
+
+async function deleteRecord(req, res, next) {
+
+}
+
 module.exports = {
   getAll,
   getOne,
-  search
+  search,
+  createRecord,
+  editRecord,
+  deleteRecord
 }
