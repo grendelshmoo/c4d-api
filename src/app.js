@@ -1,4 +1,4 @@
-const express = require('express') 
+const express = require('express')
 const app = express()
 const {PORT = 5000, NODE_ENV = 'development'} = process.env
 
@@ -15,6 +15,7 @@ app.use(require('cors')())
 app.use('/api/users', require('./routes/users'))
 app.use('/api/records', require('./routes/records'))
 app.use('/api/contacts', require('./routes/contacts'))
+app.use('/api/properties', require('./routes/properties'))
 
 
 

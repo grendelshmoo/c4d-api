@@ -1,10 +1,14 @@
 const knex = require('knex')
 const db = require('../db')
 
-// Get all returns a summary line entry for the records.
-// minimum will include transaction basics, document, parties.
 function getAll() {
   return db('contacts')
+}
+
+function getOne(id) {
+  return db('contacts')
+    .where({ id })
+    .select('*')
 }
 
 function checkForContact(body) {
@@ -25,9 +29,32 @@ function createContact(body) {
     .returning('*')
 }
 
+function deleteContact(id) {
+  return db('contacts')
+  .where({ id })
+  .del()
+  .returning('*')
+  .then(([response]) => response)
+}
+
+function editContact(id, body) {
+  const {first_name, last_name, mailing_address} = body
+  return db('contacts')
+  .where({ id })
+  .update({
+    first_name: first_name,
+    last_name: last_name,
+    mailing_address: mailing_address,
+    updated_at: new Date()
+  })
+  .returning('*')
+}
 
 module.exports = {
   getAll,
+  getOne,
   createContact,
-  checkForContact
+  checkForContact,
+  deleteContact,
+  editContact
 }
