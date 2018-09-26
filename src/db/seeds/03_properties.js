@@ -4,6 +4,7 @@ exports.seed = knex => {
     {
       id: 1,
       legal_description: "EA 117 1 3 R1 (3777m2)",
+      physical_address: "356 S. Marine Corps Dr., Tamuning, GU 96913",
       lot: "7032-3-5",
       block: "30",
       unit: "B308",
@@ -25,6 +26,7 @@ exports.seed = knex => {
     {
       id: 2,
       legal_description: "EA 121 1 3",
+      physical_address: "356 S. Marine Corps Dr., Tamuning, GU 96913",
       lot: "7032-3-5",
       block: "30",
       unit: "B308",
@@ -46,6 +48,7 @@ exports.seed = knex => {
     {
       id: 3,
       legal_description: "EA 117 1 3 R1 (3777m2)",
+      physical_address: "356 S. Marine Corps Dr., Tamuning, GU 96913",
       lot: "7032-3-5",
       block: "30",
       unit: "B308",
