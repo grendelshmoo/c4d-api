@@ -37,6 +37,18 @@ exports.seed = knex => {
       transaction_id: 100003,
       contact_id: 3,
       role: "Attorney"
+    },
+    {
+      id: 7,
+      transaction_id: 100004,
+      contact_id: 3,
+      role: "Grantor"
+    },
+    {
+      id: 8,
+      transaction_id: 100004,
+      contact_id: 2,
+      role: "Grantee"
     }
   ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)

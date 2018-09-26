@@ -6,6 +6,7 @@ async function login (req, res, next) {
     console.log('login here', req.body);
     const response = await model.login(req.body)
     const token = auth.createToken(response.id)
+    console.log(token);
 
     res.json({ token })
   } catch (e) {

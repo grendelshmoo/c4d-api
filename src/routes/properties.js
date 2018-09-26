@@ -4,6 +4,8 @@ const auth = require('../lib/auth')
 
 router.get('/', auth.isLoggedIn, ctrl.getAll)
 router.get('/:propertyId', auth.isLoggedIn, ctrl.getOne)
+router.get('/:propertyId/records', auth.isLoggedIn, ctrl.getPropertyRecords)
+router.get('/:propertyId/chain', ctrl.getChainOfTitle)
 router.post('/', ctrl.createProperty)
 router.delete('/:propertyId', ctrl.deleteProperty)
 router.patch('/:propertyId', ctrl.editProperty)

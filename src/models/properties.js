@@ -39,6 +39,30 @@ function editProperty(id, body) {
   .returning('*')
 }
 
+function getPropertyRecords(id) {
+  return db('land_transactions').where({ property_id: id }).join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+    const promises = records.map(record => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
+        record.parties = parties
+        return record
+      })
+    })
+    return Promise.all(promises)
+  })
+}
+
+function getChainOfTitle(id) {
+  return db('land_transactions').where({ property_id: id, document_type: "Deed" }).join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+    const promises = records.map(record => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
+        record.parties = parties
+        return record
+      })
+    })
+    return Promise.all(promises)
+  })
+
+}
 
 module.exports = {
   getAll,
@@ -46,5 +70,7 @@ module.exports = {
   checkForProperty,
   createProperty,
   deleteProperty,
-  editProperty
+  editProperty,
+  getPropertyRecords,
+  getChainOfTitle
 }

@@ -31,9 +31,9 @@ async function search(req, res, next) {
     const searchString = unescape(req.query.grantor)
     const fullText = searchString.replace(/\s/g, "\%")
     const data = await model.search(fullText)
-    res.status(200).json({
+    res.status(200).json(
       data
-    })
+    )
   } catch (e) {
     next({
       status: 400,
