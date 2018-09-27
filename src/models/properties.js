@@ -54,7 +54,7 @@ function getPropertyRecords(id) {
 function getChainOfTitle(id) {
   return db('land_transactions').where({ property_id: id, document_type: "Deed" }).join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
     const promises = records.map(record => {
-      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id, role: "Grantee"}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
         record.parties = parties
         return record
       })
