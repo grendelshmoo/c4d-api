@@ -88,10 +88,10 @@ function analyzeRisk (req, res, next) {
     const id = req.params.propertyId
     Promise.all([
       risk.easement(id),
-      risk.taxes(id),
       risk.legalaction(id),
-      risk.contact(id),
-      risk.deceased(id)
+      risk.taxes(id),
+      risk.deceased(id),
+      risk.contact(id)
     ]).then((data) => res.status(200).json({data}))
   } catch (e) {
     next({
