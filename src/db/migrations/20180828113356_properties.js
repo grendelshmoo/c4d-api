@@ -3,7 +3,7 @@ exports.up = knex => {
   return knex.schema.createTable('properties', table => {
     table.increments('id')
     table.string('legal_description')
-    table.string('physical_address')
+    table.string('street_address')
     table.string('lot')
     table.string('block')
     table.string('unit')
