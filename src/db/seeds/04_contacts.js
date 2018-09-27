@@ -10,9 +10,9 @@ exports.seed = knex => {
     },
     {
       id: 2,
-      first_name: "Cherri",
-      last_name: "Mendiola",
-      mailing_address: "356 S Marine Corps Dr., Tamuning, GU, 96913"
+      first_name: "Eustace",
+      last_name: "Nirmblather",
+      mailing_address: ""
     },
     {
       id: 3,
@@ -25,7 +25,14 @@ exports.seed = knex => {
       first_name: "Ron",
       last_name: "Young",
       mailing_address: "356 S Marine Corps Dr., Tamuning, GU, 96913"
+    },
+    {
+      id: 5,
+      first_name: "Joe",
+      last_name: "Smith",
+      mailing_address: ""
     }
+
   ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
   })

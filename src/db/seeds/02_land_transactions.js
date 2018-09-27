@@ -85,6 +85,72 @@ exports.seed = knex => {
       building_appraised_value: 280.00,
       remarks: "Nature of Tax: GRT Account No: 200300358 Taxable Period: 1/2013; 2/2013; 3/2013; 5/2013; 6/2013; 7/2013; 8/2013; 9/2013; 10/2013; 11/2013; 12/2013; 1/2014; 2/2014; 3/2014; 4/2014; 5/2014; 6/2014; 4/2013 Assessment Date: 8/14/2014; 11/04/2015 Amt Of Assessment: 5482.52 Lien NO: 160200039",
       source_db: "4DGUM"
+    },
+    {
+      id: 100005,
+      property_id: 1,
+      document_date: "2002-05-23",
+      recording_date: "2002-05-23",
+      document_type: "Deed",
+      title_company: "Security Title",
+      instrument_number: 889628,
+      lcdn: 16706,
+      book: 9,
+      page: 52,
+      amount: 280.00,
+      recording_fees: 280.00,
+      remarks: "",
+      source_db: "4DGUM"
+    },
+    {
+      id: 100006,
+      property_id: 1,
+      document_date: "1966-01-10",
+      recording_date: "1966-01-10",
+      document_type: "Deed",
+      title_company: "Security Title",
+      instrument_number: 889628,
+      lcdn: 16706,
+      book: 9,
+      page: 52,
+      amount: 280.00,
+      recording_fees: 280.00,
+      remarks: "",
+      source_db: "4DGUM"
+    },
+    {
+      id: 100007,
+      property_id: 1,
+      document_date: "1998-01-10",
+      recording_date: "1998-01-10",
+      document_type: "Amended Grant of Easement and Access"
+    },
+    {
+      id: 100008,
+      property_id: 1,
+      document_date: "2008-01-10",
+      recording_date: "2008-01-10",
+      document_type: "Tax Lien"
+    },
+    {
+      id: 100009,
+      property_id: 1,
+      document_date: "2008-01-10",
+      recording_date: "2008-01-10",
+      document_type: "Notice of Levy"
+    },
+    {
+      id: 100010,
+      property_id: 1,
+      document_date: "2017-01-10",
+      recording_date: "2017-01-10",
+      document_type: "Lis Pendens"
+    },
+    {
+      id: 100011,
+      document_date: "2018-01-5",
+      recording_date: "2018-01-5",
+      document_type: "Certificate of Death"
     }
 
   ]).then(() => {

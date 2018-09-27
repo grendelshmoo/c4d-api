@@ -1,4 +1,5 @@
 const model = require('../models/properties')
+const risk = require('../models/risk')
 
 async function getAll(req, res, next) {
   const data = await model.getAll()
@@ -82,6 +83,24 @@ async function getChainOfTitle(req, res, next) {
   }
 }
 
+function analyzeRisk (req, res, next) {
+  try {
+    const id = req.params.propertyId
+    Promise.all([
+      risk.easement(id),
+      risk.taxes(id),
+      risk.legalaction(id),
+      risk.contact(id),
+      risk.deceased(id)
+    ]).then((data) => res.status(200).json({data}))
+  } catch (e) {
+    next({
+      status: 400,
+      error: 'Unable to analyze risk.'
+    })
+  }
+}
+
 module.exports = {
   getAll,
   getOne,
@@ -90,5 +109,6 @@ module.exports = {
   deleteProperty,
   editProperty,
   getPropertyRecords,
-  getChainOfTitle
+  getChainOfTitle,
+  analyzeRisk
 }

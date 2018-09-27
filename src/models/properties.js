@@ -64,6 +64,7 @@ function getChainOfTitle(id) {
 
 }
 
+
 module.exports = {
   getAll,
   getOne,
