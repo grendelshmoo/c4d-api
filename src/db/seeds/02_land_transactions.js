@@ -151,6 +151,9 @@ exports.seed = knex => {
       document_date: "2018-01-5",
       recording_date: "2018-01-5",
       document_type: "Certificate of Death"
+    },
+    {
+      id: 100012
     }
 
   ]).then(() => {

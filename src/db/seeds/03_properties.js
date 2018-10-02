@@ -4,7 +4,7 @@ exports.seed = knex => {
     {
       id: 1,
       legal_description: "EA 117 1 3 R1 (3777m2)",
-      street_address: "356 S. Marine Corps Dr., Tamuning, GU 96913",
+      street_address: "10650 60th Ave S., Seattle, WA 98178",
       lot: "7032-3-5",
       block: "30",
       unit: "B308",
