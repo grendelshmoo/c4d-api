@@ -7,9 +7,9 @@ router.get('/:propertyId', auth.isLoggedIn, ctrl.getOne)
 router.get('/:propertyId/records', auth.isLoggedIn, ctrl.getPropertyRecords)
 router.get('/:propertyId/chain', auth.isLoggedIn, ctrl.getChainOfTitle)
 router.get('/:propertyId/analyze', auth.isLoggedIn, ctrl.analyzeRisk)
-router.post('/', ctrl.createProperty)
-router.delete('/:propertyId', ctrl.deleteProperty)
-router.patch('/:propertyId', ctrl.editProperty)
+router.post('/', auth.isLoggedIn, ctrl.createProperty)
+router.delete('/:propertyId', auth.isLoggedIn, ctrl.deleteProperty)
+router.patch('/:propertyId', auth.isLoggedIn, ctrl.editProperty)
 
 
 module.exports = router
