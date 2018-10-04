@@ -19,7 +19,7 @@ function getAll() {
 function getOne(id) {
   return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').where('land_transactions.id', id).select('land_transactions.id AS record_number','*').then(records => {
     const promises = records.map(record => {
-      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: id}).select('first_name', 'last_name', 'mailing_address', 'role', 'transaction_id').then(parties => {
+      return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: id}).select('contact_id', 'first_name', 'last_name', 'mailing_address', 'role', 'transaction_id').then(parties => {
         record.parties = parties
         return record
       })
