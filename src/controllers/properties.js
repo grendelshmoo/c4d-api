@@ -20,11 +20,19 @@ async function getOne(req, res, next) {
 }
 
 async function checkForProperty(req, res, next) {
-
+  try {
+    const data = await model.checkForProperty(req.body)
+    data.length === 0
+      ? createProperty(req, res, next)
+      : res.status(200).json(data)
+  } catch (e) {
+    next({status: 400, error: `Error checking for existing property.`})
+  }
 }
 
 async function createProperty(req, res, next) {
   try {
+    console.log('BODY:', req.body);
     const data = await
     model.createProperty(req.body)
     res.status(201).json(data)

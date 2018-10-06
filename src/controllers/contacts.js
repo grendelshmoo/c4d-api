@@ -24,7 +24,7 @@ async function checkForContact(req, res, next) {
     const data = await model.checkForContact(req.body)
     data.length === 0
       ? createContact(req, res, next)
-      : res.status(200).json({data: data[0]})
+      : res.status(200).json(data[0])
   } catch (e) {
     next({status: 400, error: `Error checking for existing contact.`})
   }
@@ -34,7 +34,8 @@ async function createContact(req, res, next) {
   try {
     const data = await
     model.createContact(req.body)
-    res.status(201).json(data)
+    console.log('CREATE CONTACT RESPONSE:', data[0]);
+    res.status(201).json(data[0])
   } catch (e) {
     next({status: 400, error: `Contact could not be added.`})
   }

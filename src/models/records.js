@@ -17,7 +17,7 @@ function getAll() {
 }
 
 function getOne(id) {
-  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').where('land_transactions.id', id).select('land_transactions.id AS record_number','*').then(records => {
+  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').where('land_transactions.id', id).select('land_transactions.id AS record_number', '*').then(records => {
     const promises = records.map(record => {
       return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: id}).select('contact_id', 'first_name', 'last_name', 'mailing_address', 'role', 'transaction_id').then(parties => {
         record.parties = parties
@@ -27,7 +27,6 @@ function getOne(id) {
     return Promise.all(promises)
   })
 }
-
 
 function search(fullText) {
 
@@ -42,44 +41,41 @@ function search(fullText) {
   })
 }
 
+// for (x in object)
+// if x = whatever do the thing, else
+
 function createRecord(body) {
-  console.log('IN MODEL CREATE RECORD')
-  const {title_company, instrument_number} = body
-  console.log('PASSING IN: ', title_company, instrument_number)
- return db('land_transactions')
-    .returning('id')
-    .insert({title_company, instrument_number})
-    // .then(function(response) {
-    //   console.log('RESPONSE IS: ', response)
-    // })
+  // pull the body apart.
+  // insert into land_transactions, then into parties
 
-     // .insert({address})
-     // .returning('id')
-     // .then(function (response) {
-     //     //console.log(body, response, movieId)
-     //     return db('scenes')
-     //
-     //         .insert({movie_id: movieId, description: body.description, location_id: response[0]})
-     //         .returning('*')
-     // })
-     // .then(function(response) {
-     //     console.log('RESPONSE IS: ',response, photo)
-     //     return db('photos')
-     //     .insert({scene_id: response[0].id, photo: photo})
-     // })
+  // const data = { a: 1, b: 2, c: 3 };
+  //
+  // const pick = (obj, ...args) => ({
+  //   ...args.reduce((res, key) => ({ ...res, [key]: obj[key] }), { })
+  // })
+  //
+  // console.log(
+  //   pick(data, 'a', 'b')
+  // )
 
+  const {document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db} = body
 
-
+  return db('land_transactions').insert({document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db})
+  .returning('id')
 
 }
 
-function editRecord() {
-
+function addParties(body) {
+  console.log("Parties:", body);
+  const promises = body.map(party => {
+    return db('parties').insert({role: party.role, contact_id: party.contact_id, transaction_id: party.transaction_id}).returning('*')
+  })
+  return Promise.all(promises)
 }
 
-function deleteRecord() {
+function editRecord() {}
 
-}
+function deleteRecord() {}
 
 module.exports = {
   getAll,
@@ -87,5 +83,6 @@ module.exports = {
   search,
   createRecord,
   editRecord,
-  deleteRecord
+  deleteRecord,
+  addParties
 }

@@ -44,10 +44,9 @@ async function search(req, res, next) {
 
 async function createRecord(req, res, next) {
   try {
-      // console.log(req.body)
-      const response = await model.createRecord(req.body)
+      const data = await model.createRecord(req.body)
       // console.log('RESPONSE:', response)
-      res.status(201)
+      res.status(201).json({transaction_id: data[0]})
   } catch (e) {
       next({
           status: 400,
@@ -55,6 +54,18 @@ async function createRecord(req, res, next) {
       })
   }
 
+}
+
+async function addParties(req, res, next) {
+  try {
+      const data = await model.addParties(req.body)
+      res.status(201).json({data})
+  } catch (e) {
+      next({
+          status: 400,
+          error: `Party could not be added`
+      })
+  }
 }
 
 async function editRecord(req, res, next) {
@@ -71,5 +82,6 @@ module.exports = {
   search,
   createRecord,
   editRecord,
-  deleteRecord
+  deleteRecord,
+  addParties
 }

@@ -16,6 +16,7 @@ app.use('/api/users', require('./routes/users'))
 app.use('/api/records', require('./routes/records'))
 app.use('/api/contacts', require('./routes/contacts'))
 app.use('/api/properties', require('./routes/properties'))
+app.use('/api/stats', require('./routes/stats'))
 
 
 

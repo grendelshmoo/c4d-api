@@ -7,7 +7,7 @@ router.get('/:propertyId', auth.isLoggedIn, ctrl.getOne)
 router.get('/:propertyId/records', auth.isLoggedIn, ctrl.getPropertyRecords)
 router.get('/:propertyId/chain', auth.isLoggedIn, ctrl.getChainOfTitle)
 router.get('/:propertyId/analyze', auth.isLoggedIn, ctrl.analyzeRisk)
-router.post('/', auth.isLoggedIn, ctrl.createProperty)
+router.post('/', auth.isLoggedIn, ctrl.checkForProperty)
 router.delete('/:propertyId', auth.isLoggedIn, ctrl.deleteProperty)
 router.patch('/:propertyId', auth.isLoggedIn, ctrl.editProperty)
 
