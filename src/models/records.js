@@ -41,9 +41,6 @@ function search(fullText) {
   })
 }
 
-// for (x in object)
-// if x = whatever do the thing, else
-
 function createRecord(body) {
   // pull the body apart.
   // insert into land_transactions, then into parties
@@ -66,14 +63,28 @@ function createRecord(body) {
 }
 
 function addParties(body) {
-  console.log("Parties:", body);
   const promises = body.map(party => {
     return db('parties').insert({role: party.role, contact_id: party.contact_id, transaction_id: party.transaction_id}).returning('*')
   })
   return Promise.all(promises)
 }
 
-function editRecord() {}
+function removeParty(body) {
+    const {contact_id, transaction_id, role} = body
+    return db('parties')
+    .where({contact_id, transaction_id, role})
+    .del()
+    .returning('*')
+
+}
+
+function editRecord(id, body) {
+
+  const {document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db} = body
+
+    return db('land_transactions').where('land_transactions.id', id).update(
+      {document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db}).returning('*')
+}
 
 function deleteRecord() {}
 
@@ -84,5 +95,6 @@ module.exports = {
   createRecord,
   editRecord,
   deleteRecord,
-  addParties
+  addParties,
+  removeParty
 }

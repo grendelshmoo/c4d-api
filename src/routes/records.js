@@ -9,8 +9,9 @@ router.get('/:recordId', auth.isLoggedIn, ctrl.getOne)
 
 router.post('/', auth.isLoggedIn, ctrl.createRecord)
 router.post('/parties', auth.isLoggedIn, ctrl.addParties)
-router.patch('/:recordId', ctrl.editRecord)
-router.delete('/:recordId', ctrl.deleteRecord)
+router.delete('/parties/', auth.isLoggedIn, ctrl.removeParty)
+router.patch('/:recordId', auth.isLoggedIn, ctrl.editRecord)
+router.delete('/:recordId', auth.isLoggedIn, ctrl.deleteRecord)
 
 
 

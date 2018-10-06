@@ -69,7 +69,28 @@ async function addParties(req, res, next) {
 }
 
 async function editRecord(req, res, next) {
+  try {
+      const data = await model.editRecord(req.body)
+      res.status(200).json({data})
+  } catch (e) {
+      next({
+          status: 400,
+          error: `Record could not be updated.`
+      })
+  }
 
+}
+
+async function removeParty(req, res, next) {
+  try {
+    const data = await model.removeParty(req.body)
+    res.status(200).json({data})
+  } catch (e) {
+    next({
+        status: 400,
+        error: `Cound not remove party.`
+    })
+  }
 }
 
 async function deleteRecord(req, res, next) {
@@ -83,5 +104,6 @@ module.exports = {
   createRecord,
   editRecord,
   deleteRecord,
-  addParties
+  addParties,
+  removeParty
 }
