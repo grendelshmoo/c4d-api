@@ -22,10 +22,11 @@ function getPropertiesCount () {
 }
 
 function getRecordsByDate () {
-  return db('land_transactions').select('recording_date')
+  return db('land_transactions').select('recording_date').orderByRaw('recording_date ASC')
 }
 
 function getRecordsByMunicipality () {
+  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').select('properties.municipality')
 
 }
 

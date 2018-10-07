@@ -153,8 +153,36 @@ exports.seed = knex => {
       document_type: "Certificate of Death"
     },
     {
-      id: 100012
-    }
+      id: 100012,
+      property_id: 2,
+      document_date: "1970-01-5",
+      recording_date: "1970-01-5",
+      document_type: "Deed"
+    },{
+      id: 100013,
+      property_id: 2,
+      document_date: "1971-01-5",
+      recording_date: "1971-01-5",
+      document_type: "Deed"
+    },{
+      id: 100014,
+      property_id: 2,
+      document_date: "1971-01-5",
+      recording_date: "1971-01-5",
+      document_type: "Deed"
+    },{
+      id: 100015,
+      property_id: 2,
+      document_date: "1972-01-5",
+      recording_date: "1972-01-5",
+      document_type: "Deed"
+    },{
+      id: 100016,
+      property_id: 2,
+      document_date: "1995-01-5",
+      recording_date: "1995-01-5",
+      document_type: "Deed"
+    },
 
   ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}))`)

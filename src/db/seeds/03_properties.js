@@ -41,7 +41,7 @@ exports.seed = knex => {
       year_built: 1964,
       type_of_construction: "DWELL/ICP",
       building_condition: "Average",
-      municipality: "Dededo",
+      municipality: "Merizio",
       condominium: "Nimitz Hill Towers",
       island: "Guam"
     },
@@ -64,7 +64,7 @@ exports.seed = knex => {
       type_of_construction: "DWELL/ICP",
       building_condition: "Average",
       municipality: "Garapan",
-      island: "Saipan"
+      island: ""
     }
 
   ]).then(() => {
