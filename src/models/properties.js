@@ -9,6 +9,11 @@ function getOne(id) {
   return db('properties').where({id}).select('*')
 }
 
+function propertySearch (fullText) {
+  console.log("IN MODEL:", fullText);
+  return db('properties').where('legal_description', 'ILIKE', `%${fullText}%`)
+}
+
 function checkForProperty(body) {
   const {legal_description} = body
 
@@ -104,5 +109,6 @@ module.exports = {
   deleteProperty,
   editProperty,
   getPropertyRecords,
-  getChainOfTitle
+  getChainOfTitle,
+  propertySearch
 }

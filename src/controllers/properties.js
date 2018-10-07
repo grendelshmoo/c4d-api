@@ -1,6 +1,23 @@
 const model = require('../models/properties')
 const risk = require('../models/risk')
 
+async function propertySearch(req, res, next) {
+  try {
+
+    const searchString = unescape(req.query.legal)
+    const fullText = searchString.replace(/\s/g, "\%")
+    const data = await model.propertySearch(fullText)
+    res.status(200).json(
+      data
+    )
+  } catch (e) {
+    next({
+      status: 400,
+      error: `No results`
+    })
+  }
+}
+
 async function getAll(req, res, next) {
   const data = await model.getAll()
   res.status(200).json({data})
@@ -112,6 +129,7 @@ function analyzeRisk (req, res, next) {
 module.exports = {
   getAll,
   getOne,
+  propertySearch,
   checkForProperty,
   createProperty,
   deleteProperty,
