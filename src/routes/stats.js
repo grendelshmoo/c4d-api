@@ -4,8 +4,8 @@ const auth = require('../lib/auth')
 
 // add auth.isLoggedIn middleware
 router.get('/breakdown', auth.isLoggedIn, ctrl.getStats)
-router.get('/graph1', ctrl.getRecordsByDate)
-router.get('/graph2', ctrl.getRecordsByMunicipality)
+router.get('/graph1', auth.isLoggedIn, ctrl.getRecordsByDate)
+router.get('/graph2', auth.isLoggedIn, ctrl.getRecordsByMunicipality)
 
 
 
