@@ -58,7 +58,7 @@ function createRecord(body) {
   const {document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db} = body
 
   return db('land_transactions').insert({document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db})
-  .returning('id')
+  .returning('*')
 
 }
 

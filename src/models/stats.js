@@ -22,6 +22,7 @@ function getPropertiesCount () {
 }
 
 function getRecordsByDate () {
+  return db('land_transactions').select('recording_date')
 }
 
 function getRecordsByMunicipality () {
