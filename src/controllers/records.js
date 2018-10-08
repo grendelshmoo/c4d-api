@@ -28,9 +28,11 @@ async function getOne(req, res, next) {
 
 async function search(req, res, next) {
   try {
+    console.log("CONTROLLER:", req.query.grantor);
     const searchString = unescape(req.query.grantor)
     const fullText = searchString.replace(/\s/g, "\%")
     const data = await model.search(fullText)
+    console.log("RESPONSE:", data);
     res.status(200).json(
       data
     )

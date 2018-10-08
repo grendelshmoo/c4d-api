@@ -4,7 +4,7 @@ const db = require('../db')
 // Get all returns a summary line entry for the records.
 // minimum will include transaction basics, document, parties.
 function getAll() {
-  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').select('land_transactions.id', 'recording_date', 'document_type', 'legal_description', 'property_id').then(records => {
     const promises = records.map(record => {
       return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
         record.parties = parties
@@ -29,8 +29,13 @@ function getOne(id) {
 }
 
 function search(fullText) {
-
-  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id').join('contacts', 'parties.contact_id', 'contacts.id').where('properties.legal_description', 'ILIKE', `%${fullText}%`).select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+  console.log("IN MODEL:", fullText);
+  return db('land_transactions')
+  .join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id')
+  .join('contacts', 'parties.contact_id', 'contacts.id')
+  .select('land_transactions.id', 'recording_date', 'document_type', 'legal_description')
+  .where('legal_description', 'ILIKE', `%${fullText}%`)
+  .then(records => {
     const promises = records.map(record => {
       return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
         record.parties = parties
