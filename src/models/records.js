@@ -30,7 +30,7 @@ function getOne(id) {
 
 function search(fullText) {
 
-  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id').join('contacts', 'parties.contact_id', 'contacts.id').where('last_name', 'ILIKE', `%${fullText}%`).select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
+  return db('land_transactions').join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id').join('contacts', 'parties.contact_id', 'contacts.id').where('properties.legal_description', 'ILIKE', `%${fullText}%`).select('land_transactions.id', 'recording_date', 'document_type', 'legal_description').then(records => {
     const promises = records.map(record => {
       return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {
         record.parties = parties
@@ -42,18 +42,7 @@ function search(fullText) {
 }
 
 function createRecord(body) {
-  // pull the body apart.
-  // insert into land_transactions, then into parties
-
-  // const data = { a: 1, b: 2, c: 3 };
-  //
-  // const pick = (obj, ...args) => ({
-  //   ...args.reduce((res, key) => ({ ...res, [key]: obj[key] }), { })
-  // })
-  //
-  // console.log(
-  //   pick(data, 'a', 'b')
-  // )
+  console.log("IN MODEL:", body)
 
   const {document_date, recording_date, document_type, title_company, property_id, instrument_number, fy_number, cnmi_file_number, lcdn, book, page, amount, recording_fees, land_tax, building_tax, land_appraised_value, building_appraised_value, remarks, source_db} = body
 

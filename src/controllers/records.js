@@ -44,6 +44,7 @@ async function search(req, res, next) {
 
 async function createRecord(req, res, next) {
   try {
+      console.log("IN CONTROLLER:", req.body);
       const data = await model.createRecord(req.body)
       // console.log('RESPONSE:', response)
       res.status(201).json({transaction_id: data[0]})
