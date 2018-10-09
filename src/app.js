@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const {PORT = 5000, NODE_ENV = 'development'} = process.env
-app.use(require('cors')())
+const {PORT = 5000, NODE_ENV = 'production'} = process.env
+// app.use(require('cors')())
+app.use(require('cors')({origin: '*'}))
 
 if (NODE_ENV === 'development') {
     require('dotenv').load()
@@ -9,7 +10,7 @@ if (NODE_ENV === 'development') {
 }
 
 app.use(require('body-parser').json())
-// app.use(require('cors')({origin: '*'}))
+
 
 
 //Routes
