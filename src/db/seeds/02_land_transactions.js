@@ -183,6 +183,46 @@ exports.seed = knex => {
       recording_date: "1995-01-5",
       document_type: "Deed"
     },
+    {
+      id: 235679,
+      property_id: 5902,
+      document_date: "4/16/66",
+      recording_date: "4/16/66",
+      document_type: "Deed",
+      title_company: "Pacific Title",
+      amount: 23300,
+      recording_fees: 25
+    },
+    {
+      id: 359460,
+      property_id: 5902,
+      document_date: "1/17/75",
+      recording_date: "1/17/75",
+      document_type: "Deed",
+      title_company: "Title Gaurantee",
+      amount: 39500,
+      recording_fees: 75
+    },
+    {
+      id: 369363,
+      property_id: 5902,
+      document_date: "10/1/98",
+      recording_date: "10/1/98",
+      document_type: "Deed",
+      title_company: "Security Title",
+      amount: 198000,
+      recording_fees: 100
+    },
+    {
+      id: 634468,
+      property_id: 5902,
+      document_date: "6/12/16",
+      recording_date: "6/12/16",
+      document_type: "Deed",
+      title_company: "Security Title",
+      amount: 450000,
+      recording_fees: 200
+    }
 
   ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}))`)

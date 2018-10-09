@@ -31,6 +31,30 @@ exports.seed = knex => {
       first_name: "Joe",
       last_name: "Smith",
       mailing_address: ""
+    },
+    {
+      id: 2733,
+      first_name: "Gale",
+      last_name: "Sepe",
+      mailing_address: "7619 Temple Court, Fair Lawn, NJ 07410"
+    },
+    {
+      id: 5116,
+      first_name: "Richie",
+      last_name: "Casias",
+      mailing_address: "33 Cooper Street, Baltimore, MD 21206"
+    },
+    {
+      id: 4511,
+      first_name: "Lane",
+      last_name: "Bassin",
+      mailing_address: "47 S. Trout St., Zanesville, OH 43701"
+    },
+    {
+      id: 8878,
+      first_name: "Modesto",
+      last_name: "Coelho",
+      mailing_address: "9428 SE. Ridgewood Drive, Norristown, PA 19401"
     }
 
   ]).then(() => {
