@@ -8,8 +8,8 @@ if (NODE_ENV === 'development') {
 }
 
 app.use(require('body-parser').json())
-// app.use(require('cors')({origin: '*'}))
-app.use(require('cors')())
+app.use(require('cors')({origin: '*'}))
+// app.use(require('cors')())
 
 //Routes
 app.use('/api/users', require('./routes/users'))
