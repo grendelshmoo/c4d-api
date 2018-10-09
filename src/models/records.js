@@ -31,10 +31,11 @@ function getOne(id) {
 function search(fullText) {
   console.log("IN MODEL:", fullText);
   return db('land_transactions')
-  .join('properties', 'land_transactions.property_id', 'properties.id').join('parties', 'parties.transaction_id', 'land_transactions.id')
+  .join('properties', 'land_transactions.property_id', 'properties.id').where('legal_description', 'ILIKE', `%${fullText}%`).distinct('land_transactions.id')
+  .join('parties', 'parties.transaction_id', 'land_transactions.id')
   .join('contacts', 'parties.contact_id', 'contacts.id')
   .select('land_transactions.id', 'recording_date', 'document_type', 'legal_description')
-  .where('legal_description', 'ILIKE', `%${fullText}%`)
+
   .then(records => {
     const promises = records.map(record => {
       return db('parties').join('contacts', 'parties.contact_id', 'contacts.id').where({transaction_id: record.id}).select('first_name', 'last_name', 'mailing_address', 'role').then(parties => {

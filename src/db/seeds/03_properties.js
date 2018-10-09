@@ -3,7 +3,7 @@ exports.seed = knex => {
   return knex(table).insert([
     {
       id: 1,
-      legal_description: "EA 117 1 3 R1 (3777m2)",
+      legal_description: "EA 123 7 3 R2",
       street_address: "10650 60th Ave S., Seattle, WA 98178",
       lot: "7032-3-5",
       block: "30",
@@ -48,10 +48,10 @@ exports.seed = knex => {
     {
       id: 3,
       legal_description: "EA 117 1 3 R1 (3777m2)",
-      street_address: "356 S. Marine Corps Dr., Tamuning, GU 96913",
-      lot: "7032-3-5",
-      block: "30",
-      unit: "B308",
+      street_address: "111 S Jackson St, Seattle, WA 98104",
+      lot: "5032-1",
+      block: "20",
+      unit: "A202",
       area: 27197.52,
       phase: "1",
       tract: "24403",
