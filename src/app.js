@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const {PORT = 5000, NODE_ENV = 'development'} = process.env
+app.use(require('cors')())
 
 if (NODE_ENV === 'development') {
     require('dotenv').load()
@@ -8,8 +9,8 @@ if (NODE_ENV === 'development') {
 }
 
 app.use(require('body-parser').json())
-app.use(require('cors')({origin: '*'}))
-// app.use(require('cors')())
+// app.use(require('cors')({origin: '*'}))
+
 
 //Routes
 app.use('/api/users', require('./routes/users'))
