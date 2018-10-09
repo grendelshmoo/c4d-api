@@ -182,46 +182,6 @@ exports.seed = knex => {
       document_date: "1995-01-5",
       recording_date: "1995-01-5",
       document_type: "Deed"
-    },
-    {
-      id: 100017
-      property_id: 4,
-      document_date: "4/16/66",
-      recording_date: "4/16/66",
-      document_type: "Deed",
-      title_company: "Pacific Title",
-      amount: 23300,
-      recording_fees: 25
-    },
-    {
-      id: 100018,
-      property_id: 4,
-      document_date: "1/17/75",
-      recording_date: "1/17/75",
-      document_type: "Deed",
-      title_company: "Title Gaurantee",
-      amount: 39500,
-      recording_fees: 75
-    },
-    {
-      id: 100019,
-      property_id: 4,
-      document_date: "10/1/98",
-      recording_date: "10/1/98",
-      document_type: "Deed",
-      title_company: "Security Title",
-      amount: 198000,
-      recording_fees: 100
-    },
-    {
-      id: 100020,
-      property_id: 4,
-      document_date: "6/12/16",
-      recording_date: "6/12/16",
-      document_type: "Deed",
-      title_company: "Security Title",
-      amount: 450000,
-      recording_fees: 200
     }
 
   ]).then(() => {

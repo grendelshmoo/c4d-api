@@ -65,18 +65,6 @@ exports.seed = knex => {
       building_condition: "Average",
       municipality: "Garapan",
       island: ""
-    },
-    {
-      id: 4,
-      legal_description: "Parcel 0561000330",
-      street_address: "10650 60th Ave S, Seattle, WA 98107",
-      square_footage: 5750,
-      building_square_footage: 2200,
-      building_type: "Residential",
-      year_built: 1966,
-      type_of_construction: "DWELL/ICP",
-      building_condition: "Good",
-      municipality: "Seattle"
     }
 
   ]).then(() => {
