@@ -67,7 +67,7 @@ exports.seed = knex => {
       island: ""
     },
     {
-      id: 5902,
+      id: 4,
       legal_description: "Parcel 0561000330",
       street_address: "10650 60th Ave S, Seattle, WA 98107",
       square_footage: 5750,

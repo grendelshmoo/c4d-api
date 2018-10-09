@@ -184,8 +184,8 @@ exports.seed = knex => {
       document_type: "Deed"
     },
     {
-      id: 235679,
-      property_id: 5902,
+      id: 100017
+      property_id: 4,
       document_date: "4/16/66",
       recording_date: "4/16/66",
       document_type: "Deed",
@@ -194,8 +194,8 @@ exports.seed = knex => {
       recording_fees: 25
     },
     {
-      id: 359460,
-      property_id: 5902,
+      id: 100018,
+      property_id: 4,
       document_date: "1/17/75",
       recording_date: "1/17/75",
       document_type: "Deed",
@@ -204,8 +204,8 @@ exports.seed = knex => {
       recording_fees: 75
     },
     {
-      id: 369363,
-      property_id: 5902,
+      id: 100019,
+      property_id: 4,
       document_date: "10/1/98",
       recording_date: "10/1/98",
       document_type: "Deed",
@@ -214,8 +214,8 @@ exports.seed = knex => {
       recording_fees: 100
     },
     {
-      id: 634468,
-      property_id: 5902,
+      id: 100020,
+      property_id: 4,
       document_date: "6/12/16",
       recording_date: "6/12/16",
       document_type: "Deed",
